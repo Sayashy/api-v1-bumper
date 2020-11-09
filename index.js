@@ -9,7 +9,7 @@ const port = process.env.PORT || 20000
 app.get("/", (req, res) => {
     const response = {}
     response.error = false
-    response.message = "Here's your data bro"
+    response.message = "Here's your data bros"
     res.send(response)
 })
 
