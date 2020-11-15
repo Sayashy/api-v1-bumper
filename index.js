@@ -13,7 +13,10 @@ app.use(bodyParser.json());
 
 app.options('/*', handleOptionRequest)
 
-app.all("/", makeCallback(bumperController.default))
+app.get("/", (req, res) => {
+    res.send("Nothing here.")
+})
+app.post("/", makeCallback(bumperController.default))
 
 app.listen(port, () => {
     console.log(`Server listening on ${port}`)
