@@ -1,5 +1,5 @@
 const uri = require('url');
-const { firefox } = require('playwright');
+const { firefox } = require('playwright-firefox');
 
 const makeBumperRepo = () => {
     return Object.freeze({
