@@ -35,7 +35,7 @@ const makeBumperRepo = () => {
         console.log("here")
 
         try {
-            const browser = await firefox.launch({headless:false});
+            const browser = await firefox.launch({headless:true});
             const context = await browser.newContext();
             const page = await context.newPage();
             await page.goto('https://ogusers.com/member.php?action=login')
