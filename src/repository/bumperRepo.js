@@ -36,7 +36,7 @@ const makeBumperRepo = () => {
             const browser = await firefox.launch({headless:false});
             const context = await browser.newContext();
             const page = await context.newPage();
-            await page.goto(url)
+            await page.goto('https://ogusers.com/member.php?action=login')
 
             await sleep(8000);
             await page.fill('[placeholder="Username"]', process.env.OG_USERNAME)
