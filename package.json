@@ -9,8 +9,11 @@
     "dev": "nodemon"
   },
   "dependencies": {
-    "express":"*",
-    "body-parser":"*"
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "*",
+    "nodemon": "^2.0.6",
+    "playwright": "^1.6.1"
   },
   "author": "Sayashy",
   "license": "ISC"
