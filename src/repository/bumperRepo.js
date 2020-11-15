@@ -32,6 +32,8 @@ const makeBumperRepo = () => {
 
         const resp = {}
 
+        console.log("here")
+
         try {
             const browser = await firefox.launch({headless:false});
             const context = await browser.newContext();
@@ -62,6 +64,8 @@ const makeBumperRepo = () => {
             return resp
         }
         catch (error) {
+            console.log("ha")
+            console.log(error)
             resp.success = false
             resp.message = 'Can\'t bump your message'
             return resp
