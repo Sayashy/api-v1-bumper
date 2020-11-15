@@ -6,7 +6,7 @@ const bumperController = require ('./src/controllers')
 
 const app = express();
 
-const port = process.env.PORT || 20000
+const port = process.env.PORT || 80
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
