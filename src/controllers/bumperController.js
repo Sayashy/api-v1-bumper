@@ -27,8 +27,6 @@ const makeBumperController = (bumperRepo) => {
 
         const isValid = await bumperRepo.isValidUrl({url})
 
-        console.log("he")
-
         try {
             if (isValid) {
                 const resp = await bumperRepo.bumpPost({url, text})
