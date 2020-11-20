@@ -1,7 +1,7 @@
 {
   "name": "bumper",
   "version": "1.0.0",
-  "description": "test api",
+  "description": "bumper-api",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -13,7 +13,7 @@
     "dotenv": "^8.2.0",
     "express": "*",
     "nodemon": "^2.0.6",
-    "playwright-chromium": "^1.6.1"
+    "playwright-firefox": "^1.6.1"
   },
   "author": "Sayashy",
   "license": "ISC"

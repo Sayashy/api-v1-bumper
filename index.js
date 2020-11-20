@@ -6,7 +6,7 @@ const bumperController = require ('./src/controllers')
 
 const app = express();
 
-const port = process.env.PORT || 80
+const port = process.env.PORT || 20000
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -16,6 +16,7 @@ app.options('/*', handleOptionRequest)
 app.get("/", (req, res) => {
     res.send("Nothing here.")
 })
+
 app.post("/", makeCallback(bumperController.default))
 
 app.listen(port, () => {

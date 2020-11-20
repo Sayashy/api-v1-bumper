@@ -6,7 +6,7 @@ const makeBumperController = (bumperRepo) => {
     const handle = (httpRequest) => {
         switch (httpRequest.method) {
             case 'POST':
-                return postProject(httpRequest);
+                return bumpPost(httpRequest);
             default:
                 return makeHttpError({
                     statusCode: 405,
@@ -17,37 +17,40 @@ const makeBumperController = (bumperRepo) => {
     return handle
 
     /**
-     * Update existing Project from the submitted data.
+     * Bump Post on forum.
      * @param {Object} httpRequest - Request Object
      * @returns {(makeHttpSuccess | makeHttpError )} 
-     */
-    async function postProject(httpRequest) {
+    */
+    async function bumpPost(httpRequest) {
 
         let { url, text } = httpRequest.body.params;
 
-        const isValid = await bumperRepo.isValidUrl({url})
+        const isValid = await bumperRepo.isValidUrl({ url })
 
         try {
             if (isValid) {
-                const resp = await bumperRepo.bumpPost({url, text})
+                const resp = await bumperRepo.bumpPost({ url, text })
 
-                if(resp.success){
+                if (resp.success) {
                     return makeHttpSuccess({
                         statusCode: 200,
                         data: JSON.stringify(resp)
                     })
                 }
                 else {
-                    return makeHttpError({
-                        statusCode: 400,
-                        errorMessage: resp.message
+                    return makeHttpSuccess({
+                        statusCode: 200,
+                        data: JSON.stringify(resp)
                     })
                 }
-                
+
             } else {
-                return makeHttpError({
-                    statusCode: 400,
-                    errorMessage: 'Please insert a valid URL'
+                return makeHttpSuccess({
+                    statusCode: 200,
+                    data: JSON.stringify({
+                        success: false,
+                        message: 'Please insert a valid URL'
+                    })
                 })
             }
         }

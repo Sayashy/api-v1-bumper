@@ -1,5 +1,5 @@
 const uri = require('url');
-const { chromium } = require('playwright-chromium');
+const { firefox } = require('playwright-firefox');
 
 const makeBumperRepo = () => {
     return Object.freeze({
@@ -26,14 +26,20 @@ const makeBumperRepo = () => {
             console.log(err)
             return false;
         };
+
     }
 
+    /**
+     * Bump Post on forum.
+     * @param {String} url - Forum's URL
+     * @param {String} text - Text to bump with
+    */
     async function bumpPost({ url, text }) {
 
         const resp = {}
 
         try {
-            const browser = await chromium.launch();
+            const browser = await firefox.launch({'headless':true});
             const context = await browser.newContext();
             const page = await context.newPage();
             await page.goto('https://ogusers.com/member.php?action=login')
@@ -62,8 +68,6 @@ const makeBumperRepo = () => {
             return resp
         }
         catch (error) {
-            console.log("catch")
-            console.log(error)
             resp.success = false
             resp.message = 'Can\'t bump your message'
             return resp
